@@ -8,7 +8,7 @@ var calcResult = 0;
 
 
 
-app.post("/add", function(req, res){
+app.post("/math", function(req, res){
   var package = req.body;
   console.log(package.type);
   doMath(package);
