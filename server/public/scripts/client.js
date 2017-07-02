@@ -2,11 +2,11 @@ $(document).ready(function(){
   console.log('jQuery sourced.');
   var toCalculate = {};
 
-  $('#add').on('click', function(){
+  $('button').on('click', function(){
     //console.log($('#num1').val());
     toCalculate.x = $('#num1').val();
     toCalculate.y = $('#num2').val();
-    toCalculate.type = "Add";
+    toCalculate.type = $(this).attr('id');
     console.log(toCalculate);
 
     $.ajax({
@@ -20,7 +20,9 @@ $(document).ready(function(){
     displayResult();
 
   });
-
+  $('#subtract').on('click', function(){
+    console.log($(this).attr('id'));
+  });
 
 });
 function displayResult(){
@@ -35,3 +37,6 @@ function displayResult(){
   });
 
 }
+// clicking numbers should add to num1
+// clicking math should add type of math
+// clicking math should change state so numbers add to num2

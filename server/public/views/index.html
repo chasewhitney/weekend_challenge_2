@@ -2,20 +2,45 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Test Server</title>
+    <title>Weekend Challenge 2</title>
+    <link rel="stylesheet" href="main.css" />
     <script type="text/javascript" src="vendors/jquery.js"></script>
     <script type="text/javascript" src="scripts/client.js"></script>
   </head>
   <body>
     <h1>Calculator</h1>
     <input type="number" id="num1" value="2"/>
-    <button id="add">Add</button>
-    <button id="subtract">Subtract</button>
-    <button id="multiply">Multiply</button>
-    <button id="divide">Divide</button>
+
     <input type="number" id="num2" value="3"/>
     <div id="result">
-
+    </div>
+    <div id="calculator">
+      <div>
+        <button id="1" data-num="1">1</button>
+        <button id="2" data-num="2">2</button>
+        <button id="3" data-num="3">3</button>
+      </div>
+      <div>
+        <button id="4" data-num="4">4</button>
+        <button id="5" data-num="5">5</button>
+        <button id="6" data-num="6">6</button>
+      </div>
+      <div>
+        <button id="7" data-num="7">7</button>
+        <button id="8" data-num="8">8</button>
+        <button id="9" data-num="9">9</button>
+      </div>
+      <div>
+        <button id="clear">C</button>
+        <button id="0" data-num="0">0</button>
+        <button id="submit">=</button>
+      </div>
+    </div>
+    <div id="mathButtons">
+      <button id="add">Add</button>
+      <button id="subtract">Subtract</button>
+      <button id="multiply">Multiply</button>
+      <button id="divide">Divide</button>
     </div>
   </body>
 </html>
