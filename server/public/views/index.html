@@ -9,10 +9,10 @@
   </head>
   <body>
     <h1>Calculator</h1>
-    <input type="number" id="num1" value="2"/>
+    <div id="display">
+      <p>
 
-    <input type="number" id="num2" value="3"/>
-    <div id="result">
+      </p>
     </div>
     <div id="calculatorBlock">
       <div>
@@ -37,10 +37,12 @@
       </div>
     </div>
     <div id="mathButtons">
-      <button id="add">Add</button>
-      <button id="subtract">Subtract</button>
-      <button id="multiply">Multiply</button>
-      <button id="divide">Divide</button>
+      <button data-sign="+" id="add">Add</button>
+      <button data-sign="-" id="subtract">Subtract</button>
+      <button data-sign="*" id="multiply">Multiply</button>
+      <button data-sign="/" id="divide">Divide</button>
+    </div>
+    <div id="result">
     </div>
   </body>
 </html>
