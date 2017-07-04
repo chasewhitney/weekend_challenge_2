@@ -72,12 +72,13 @@ function displayResult(){
     type:'GET',
     url:'/result',
     success: function(response){
-      $('#result').append().text("Calculating...");
+      $('#result').append().text("Calculating");
       //$('#display:last').append(" = " + response);
       // $('#display:last').delay(3000).queue(function(){
       //   $(this).append(" = " + response);
       //   $('#result').append().text("");
       // });
+
       setTimeout(function(){
         $('#display p').append(" = " + response);
         $('#result').append().text("");

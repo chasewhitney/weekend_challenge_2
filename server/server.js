@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
+var doMath = require('./modules/math.js');
 app.use(bodyParser.urlencoded({extended: true}));
 
 var calcResult = 0;
@@ -11,7 +12,7 @@ var calcResult = 0;
 app.post("/math", function(req, res){
   var package = req.body;
   console.log(package.type);
-  doMath(package);
+  calcResult = doMath.doMath(package);
   //calcResult = parseInt(package.x) + parseInt(package.y);
 
   res.sendStatus(200);
@@ -36,20 +37,20 @@ app.listen(5000, function(){
 });
 
 //send this function to module
-function doMath(package){
-  if(package.type == "add"){
-    console.log('package type is add');
-    calcResult = parseInt(package.x) + parseInt(package.y);
-  } else if(package.type == "subtract"){
-    console.log('package type is subtract');
-    calcResult = parseInt(package.x) - parseInt(package.y);
-  } else if(package.type == "multiply"){
-    console.log('package type is multiply');
-    calcResult = parseInt(package.x) * parseInt(package.y);
-  } else if(package.type == "divide"){
-    console.log('package type is divide');
-    calcResult = parseInt(package.x) / parseInt(package.y);
-  }
-
-
-}
+// function doMath(package){
+//   if(package.type == "add"){
+//     console.log('package type is add');
+//     calcResult = parseInt(package.x) + parseInt(package.y);
+//   } else if(package.type == "subtract"){
+//     console.log('package type is subtract');
+//     calcResult = parseInt(package.x) - parseInt(package.y);
+//   } else if(package.type == "multiply"){
+//     console.log('package type is multiply');
+//     calcResult = parseInt(package.x) * parseInt(package.y);
+//   } else if(package.type == "divide"){
+//     console.log('package type is divide');
+//     calcResult = parseInt(package.x) / parseInt(package.y);
+//   }
+//
+//
+// }
