@@ -1,8 +1,20 @@
+
+
 button {
   height:40px;
   width:120px;
   font-size:24px;
 }
+
+.box {
+  height: 15px;
+  width: 15px;
+  background-color:gray;
+  display:inline-block;
+  margin-top: 10px;
+  margin-left: 2px;
+}
+
 #display {
   min-height: 80px;
   max-width:50%;
@@ -22,3 +34,5 @@ button {
 #mathButtons {display:inline-block;}
 
 #mathButtons button {display:block;}
+
+#result{height: 30px}

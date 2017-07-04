@@ -2,13 +2,13 @@ var toCalculate = {x:0, y:0};
 mathToggle = 0; // used to determine state while buttons are pushed with a result already showing
 numToggle = 0; // determines whether x or y is being manipulated
 result = 0; // saves last result, used if more math is applied to result
+progressBoxes = [];
+progressDelay = 0;
 
 $(document).ready(function(){
   console.log('jQuery sourced.');
-
-
+  addBoxes();
   $('.calculator').on('click', function(){
-
     // if an equals sign is found in display..
     if($('#display').text().indexOf("=") != -1) {
       // if applying math to a result
@@ -20,7 +20,6 @@ $(document).ready(function(){
         clear();
       }
     }
-
     if (numToggle == 0){
       console.log('number clicked');
       //adds button id value to number to be mathed
@@ -62,34 +61,32 @@ $(document).ready(function(){
     toCalculate = {x:0, y:0};
     numToggle = 0;
     mathToggle = 0;
-
   });
-
 });
+
 function displayResult(){
   console.log('displaying result');
   $.ajax({
     type:'GET',
     url:'/result',
     success: function(response){
-      $('#result').append().text("Calculating");
-      //$('#display:last').append(" = " + response);
-      // $('#display:last').delay(3000).queue(function(){
-      //   $(this).append(" = " + response);
-      //   $('#result').append().text("");
-      // });
-
+      simulateCalculationDisplay();
       setTimeout(function(){
         $('#display p').append(" = " + response);
         $('#result').append().text("");
       }, 3000);
-
-
       result = response;
     }
-
   });
+}
 
+function addBoxes(){
+  for(var i = 0; i < 12; i++){
+    var $box = $('<div class="box" data-boxid="' + i + '"></div>');
+    $('#boxes').append($box);
+    progressBoxes.push($box);
+
+  }
 }
 
 function clear(){
@@ -98,30 +95,23 @@ function clear(){
   $('#result').empty();
   $('#display p').empty();
 }
-// clicking numbers should add to num1
-// clicking math should add type of math
-// clicking math should change state so numbers add to num2
 
-/*
-$('button').on('click', function(){
-  //console.log($('#num1').val());
-  toCalculate.x = $('#num1').val();
-  toCalculate.y = $('#num2').val();
-  toCalculate.type = $(this).attr('id');
-  console.log(toCalculate);
+ function simulateCalculationDisplay(){
+   $('#result').append().text("Calculating...");
+   for (i = 0; i < progressBoxes.length; i++){
+     setTimeout(colorBoxes, progressDelay, i);
+     progressDelay += 250;
+   }
+   setTimeout(resetBoxes, 4000);
+ }
 
-  $.ajax({
-    type: 'POST',
-    url: '/math',
-    data: toCalculate,
-    success: function(response){
-      console.log('post was successful');
-    }
-  });
-  displayResult();
+ function colorBoxes(i) {
+   progressBoxes[i].css('background-color', 'lawngreen');
+ }
 
-});
-$('#subtract').on('click', function(){
-  console.log($(this).attr('id'));
-});
-*/
+ function resetBoxes(){
+   for (var n = 0; n < progressBoxes.length; n++){
+     progressBoxes[n].css('background-color', 'gray');
+     progressDelay = 0;
+   }
+ }
